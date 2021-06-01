@@ -9,8 +9,11 @@ name_list = names.words()
 def encrypt(plain_text,key):
     new_string = ""
     for char in plain_text:
-        if re.match("[A-Za-z]",char):
-            new_char = 97 + ((ord(char.lower()) - 97) + key) % 26
+        if re.match("[A-Z]",char):
+            new_char = 65 + ((ord(char) - 65) + key) % 26
+            new_string += chr(new_char)
+        elif re.match("[a-z]",char):
+            new_char = 97 + ((ord(char) - 97) + key) % 26
             new_string += chr(new_char)
         else:
             new_string += char
